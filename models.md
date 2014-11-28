@@ -595,7 +595,7 @@ var User = Waterline.Collection.extend({
 ### Callbacks on `destroy`
 
   - beforeDestroy: fn(criteria, cb)
-  - afterDestroy: fn(cb)
+  - afterDestroy: fn(deletedRecord, cb)
 
 #### Example
 
@@ -612,7 +612,7 @@ var User = Waterline.Collection.extend({
     name: 'string'
   },
 
-  afterDestroy: function(next){
+  afterDestroy: function(deleted_record, next){
     Cache.sync(next);
   }
 
@@ -740,7 +740,7 @@ var Foo = Waterline.Collection.extend({
 ###### tableName
 
 You can define a custom table name on your adapter by adding a `tableName` attribute. If no table
-name is supplied it will use the identity as the table name when passing it to an adapter.
+name is supplied it will use the identity as the table naafterDestroyme when passing it to an adapter.
 
 ```javascript
 var Foo = Waterline.Collection.extend({
